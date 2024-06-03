@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const cors = require('cors');
 // const produtos = require("./data/Produtos");
 dotenv.config();
 const PORT = process.env.PORT;
@@ -13,6 +14,8 @@ mongoose
   .then((err) => {
     err;
   });
+
+app.use(cors());
 
 const databaseSeeder = require("./databaseSeeder");
 const usuarioRoute = require("./routes/Usuario");

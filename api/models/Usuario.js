@@ -19,12 +19,12 @@ const usuarioSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-//validate password match or not
+
 usuarioSchema.methods.matchPassword = async function (enterPassword) {
   return await bcrypt.compare(enterPassword, this.password);
 };
 
-//register passwrod hash and store
+
 usuarioSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
